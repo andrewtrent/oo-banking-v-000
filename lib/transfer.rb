@@ -15,12 +15,17 @@ class Transfer
 
   def execute_transaction
     if self.valid? && status == "pending" && self.sender.balance > self.amount
-      self.sender.balance -= self.amount
-      self.receiver.balance += self.amount
-      self.status = "complete"
-    else
-      self.status = "rejected"
-      "Transaction rejected. Please check your account balance."
+      if self.valid? && status == "pending"
+        self.sender.balance -= self.amount
+        self.receiver.balance += self.amount
+        self.status = "complete"
+      else
+
+        self.status = "rejected"
+        "Transaction rejected. Please check your account balance."
+
+        raise Error "Somebody messed up here. One or more accounts are not valid."
+      end
     end
   end
 
@@ -29,6 +34,8 @@ class Transfer
       self.sender.balance += self.amount
       self.receiver.balance -= self.amount
       self.status = "reversed"
+    else
+      raise Error "The transaction cannot be reversed because it has not been executed."
     end
   end
 

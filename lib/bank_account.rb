@@ -6,7 +6,7 @@ class BankAccount
     if @name.nil?
       @name = name
     else
-      raise NoMethodError, "Seriously do you need to be difficult?"
+      false
     end
   end
 
@@ -25,6 +25,7 @@ class BankAccount
   end
 
   def valid?
+
     if self.balance > 0 && self.status == "open"
       true
     else
