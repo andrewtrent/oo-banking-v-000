@@ -3,11 +3,11 @@ class BankAccount
   attr_accessor :name, :balance, :status
 
   def name=(name)
-  #  if @name.nil?
+    if @name.nil?
       @name = name
-  #  else
-  #    false
-  #  end
+    else
+      false
+    end
   end
 
   def initialize(name)
