@@ -13,7 +13,7 @@ class Transfer
     if self.sender.valid? && self.receiver.valid?
       true
     else
-      false
+      print "Transaction rejected. Please check your account balance."
     end
   end
 
