@@ -6,7 +6,7 @@ class BankAccount
     if @name.nil?
       @name = name
     else
-      false
+      raise Error
     end
   end
 
