@@ -19,17 +19,17 @@ class Transfer
 
   def execute_transaction
     if self.valid? && status == "pending" && self.sender.balance > self.amount
-      if self.valid? && status == "pending"
+
         self.sender.balance -= self.amount
         self.receiver.balance += self.amount
         self.status = "complete"
-      else
+    else
 
         self.status = "rejected"
         "Transaction rejected. Please check your account balance."
 
         raise Error "Somebody messed up here. One or more accounts are not valid."
-      end
+
     end
   end
 
